@@ -2,6 +2,28 @@
 
 <?php require_once('include/connection.php');?>
 
+<!--?php
+    $first_name='main';
+    $last_name='admin';
+    $email='mainadmin@gmail.com';
+    $password='12345';
+
+    $hashed_password=sha1($password);
+
+    $query="INSERT INTO admin (first_name,last_name,email,password)
+            VALUES('{$first_name}','{$last_name}','{$email}','{$hashed_password}')";
+
+    $result=mysqli_query($connection,$query);
+
+    if($result){
+        echo "record added";
+    }
+    else{
+        echo "error record adding " ;
+    }
+?-->
+
+
 <?php
     //check for form submission
     if(isset($_POST['login'])){
@@ -27,7 +49,7 @@
             $hashed_password=sha1($password);
             
             //prepare database query
-            $query="SELECT * FROM user WHERE 
+            $query="SELECT * FROM admin WHERE 
                     email='{$email}' AND password='{$hashed_password}' LIMIT 1";
 
             $result_set=mysqli_query($connection,$query);
@@ -49,7 +71,7 @@
                     }
 
                     //redirect to users.php
-                    header('Location:quiz.php?loggedin=yes');
+                    header('Location:logged-admin.php?loggedin=yes');
 
                 }
                 else{
@@ -72,7 +94,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>www.SmartQuiz.com/login user</title>
+    <title>www.SmartQuiz.com/login Admin</title>
     <link rel="stylesheet" href="css/css1.css" class="">
 </head>
 <body>
@@ -87,9 +109,9 @@
     </div>
 </header>
 
-<form action="login.php" method="POST" class="loginform">
+<form action="adminlogin.php" method="POST" class="loginform">
             <fieldset>
-                <legend><h1>LOGIN</h1></legend>
+                <legend><h1>ADMIN LOGIN</h1></legend>
 
                 <?php
                     if(isset($errors)&& !empty($errors)){
@@ -112,23 +134,8 @@
                 <button type="submit" name="login">Login</button>
                 </p>
 
-                <p>Not a user ?  <a href="register.php"><b>Register Here</b></a></p>
-                <p>Admin ?   <a href="adminlogin.php"><b>Admin Login</b></a></p>
             </fieldset>
         </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="logfooter">

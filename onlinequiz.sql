@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2019 at 11:24 PM
+-- Generation Time: Dec 14, 2019 at 09:04 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `onlinequiz`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `password`) VALUES
+(1, 'main', 'admin', 'mainadmin@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964');
 
 -- --------------------------------------------------------
 
@@ -70,11 +91,18 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`) VALUES
 (1, 'saman', 'rathnayaka', 'saman@gmail.com', '2df806ae8cc8cc3cfc72edeb05436a162b248e9d'),
-(2, 'selin', 'andrew', 'selin@gmail.com', '6b42b2eee99ff0d0a4d8e73fb658c61daa51ccbf');
+(2, 'selin', 'andrew', 'selin@gmail.com', '6b42b2eee99ff0d0a4d8e73fb658c61daa51ccbf'),
+(3, 'sam', 'rathnayaka', 'sam@gmail.com', 'f16bed56189e249fe4ca8ed10a1ecae60e8ceac0');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `question`
@@ -93,6 +121,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
@@ -102,7 +136,7 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
